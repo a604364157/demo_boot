@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.jjx.boot.mapper.ITwoColorMapper">
+
+    <resultMap id="twoColorMap" type="com.jjx.boot.entity.TwoColorBall">
+        <id property="idNo" column="id_no"/>
+        <result property="red1" column="red1"/>
+        <result property="red2" column="red2"/>
+        <result property="red3" column="red3"/>
+        <result property="red4" column="red4"/>
+        <result property="red5" column="red5"/>
+        <result property="red6" column="red6"/>
+        <result property="blue" column="blue"/>
+        <result property="runDate" column="run_date"/>
+        <result property="opTime" column="op_time"/>
+    </resultMap>
+
+    <delete id="delTwoColor">
+        DELETE FROM two_color
+        <trim prefixOverrides="AND">
+            <where>
+                <choose>
+                    <when test="idNo != null">
+                        AND id_no = #{idNo}
+                    </when>
+                    <when test="runDate != null">
+                        AND run_date = #{runDate}
+                    </when>
+                    <otherwise>
+                        AND 1=2
+                    </otherwise>
+                </choose>
+            </where>
+        </trim>
+    </delete>
+
+</mapper>

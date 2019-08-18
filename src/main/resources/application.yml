@@ -1,0 +1,71 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    session:
+      timeout: 300
+
+#spring配置
+spring:
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+      #启用multipart文件上传
+      multipart:
+        enabled: true
+        max-file-size: 100MB
+        max-request-size: 100MB
+        file-size-threshold: 1MB
+  #数据库配置（这里是mysql6.0+，必须跟时区参数）
+  datasource:
+    url: jdbc:mysql://localhost:3306/ball?serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 6000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 6000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  #无效
+  mvc:
+    async:
+      request-timeout: 200
+  #无效
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+#  redis:
+#    database: 0
+#    host: localhost
+#    port: 6379
+#    password:
+#    jedis:
+#      pool:
+#        max-active: 8
+#        max-idle: 8
+#        min-idle: 0
+#        max-wait: 5
+
+#Mybatis映射路径
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.jjx.boot.entity
+
+#日志等级
+logging:
+  file: logs/log.log
+  level:
+    root: info

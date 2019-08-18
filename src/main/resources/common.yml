@@ -1,0 +1,5 @@
+pool:
+  minPoolSize: 1
+  maxPoolSize: 3
+  keepTime: 5
+  maxQueueSize: 10
