@@ -34,9 +34,9 @@ public class DBUtil {
         try {
             dataSource = new BasicDataSource();
             dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-            dataSource.setUrl("jdbc:mysql://137.64.66.21:8911/CUSDB?serverTimezone=Asia/Shanghai");
-            dataSource.setUsername("monitor");
-            dataSource.setPassword("Udal12Mon#$");
+            dataSource.setUrl("jdbc:mysql://ip:port/db?serverTimezone=Asia/Shanghai");
+            dataSource.setUsername("username");
+            dataSource.setPassword("password");
             dataSource.setInitialSize(1);
             dataSource.setMaxActive(3);
         } catch (Exception e) {
