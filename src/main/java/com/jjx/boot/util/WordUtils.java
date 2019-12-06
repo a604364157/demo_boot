@@ -2,10 +2,19 @@ package com.jjx.boot.util;
 
 import com.deepoove.poi.XWPFTemplate;
 import com.deepoove.poi.config.Configure;
+import com.deepoove.poi.data.NumbericRenderData;
+import com.deepoove.poi.data.PictureRenderData;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 本工具是在poi-tl上的扩展
@@ -56,7 +65,39 @@ public class WordUtils {
     public static void compile(InputStream is, OutputStream os, Object data) throws IOException {
         Configure.ConfigureBuilder builder = Configure.newBuilder();
         builder.addPlugin('&', new EachTableRenderPolicy());
-        XWPFTemplate.compile(is, builder.build()).render(data).write(os);
+        XWPFTemplate xwpfTemplate = XWPFTemplate.compile(is, builder.build());
+        xwpfTemplate.render(data).write(os);
+        xwpfTemplate.close();
+    }
+
+    public static void main(String[] args) throws IOException {
+        Map<String, Object> data = new HashMap<>(16);
+        Map<String, Object> subData = new HashMap<>(16);
+        Map<String, Object> m0 = new HashMap<>(16);
+        m0.put("name", "名称");
+        Map<String, Object> m1 = new HashMap<>(16);
+        m1.put("a", "1");
+        m1.put("b", "2");
+        m1.put("c", "3");
+        m1.put("d", "4");
+        m1.put("e", "5");
+        m1.put("f", "6");
+        m1.put("g", "7");
+        List<Map<String, Object>> list = Arrays.asList(m0, m1, m1, m1, m1);
+        subData.put("tableOne", list);
+        subData.put("tableTwo", list);
+        NumbericRenderData numbericRenderData = NumbericRenderData.build("项目现场情况项目现场11111情况项目现场情况项目现场情况项目现场情况项目\n现场情况项目现场情况项目现场情况项目现场情况",
+                "项目评分情况项目评分情况项目评分情况项目评分情况项目评分情况项目评分情况项目评分情况11111项目评分情况项目评分情况项目评分情况项目评分情况项目评分情况项目评分情况项目评分情况项目评分情况",
+                "甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情11111况甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情况甲方访谈情况");
+        PictureRenderData pictureRenderData = new PictureRenderData(400, 400, new File("E:\\9.png"));
+        List<Object> os = Arrays.asList(numbericRenderData, pictureRenderData);
+        subData.put("p", os);
+        List<Map<String, Object>> all = Arrays.asList(subData, subData);
+        data.put("eachTable", all);
+        FileOutputStream fos = new FileOutputStream("E:\\1_out.docx");
+        compile(new FileInputStream("E:\\1.docx"), fos, data);
+        fos.flush();
+        fos.close();
     }
 
 }
