@@ -2,7 +2,7 @@ package com.jjx.boot.mapper;
 
 import com.jjx.boot.dto.twocolor.QryBallInDTO;
 import com.jjx.boot.dto.twocolor.UptBallInDTO;
-import com.jjx.boot.util.DateConst;
+import com.jjx.boot.common.util.DateConst;
 import org.apache.ibatis.jdbc.SQL;
 import org.springframework.util.StringUtils;
 

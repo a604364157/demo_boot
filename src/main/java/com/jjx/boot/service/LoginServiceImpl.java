@@ -1,13 +1,13 @@
 package com.jjx.boot.service;
 
-import com.jjx.boot.config.BallException;
-import com.jjx.boot.constant.Constant;
+import com.jjx.boot.common.config.BallException;
+import com.jjx.boot.common.constant.Constant;
 import com.jjx.boot.dto.login.LoginDTO;
 import com.jjx.boot.dto.stander.OutBody;
 import com.jjx.boot.mapper.ILoginMapper;
 import com.jjx.boot.service.inter.ILoginService;
-import com.jjx.boot.util.LoginUtil;
-import com.jjx.boot.util.StringTool;
+import com.jjx.boot.common.util.LoginUtil;
+import com.jjx.boot.common.util.StringTool;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

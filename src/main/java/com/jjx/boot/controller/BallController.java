@@ -1,7 +1,7 @@
 package com.jjx.boot.controller;
 
-import com.jjx.boot.config.BallException;
-import com.jjx.boot.constant.Constant;
+import com.jjx.boot.common.config.BallException;
+import com.jjx.boot.common.constant.Constant;
 import com.jjx.boot.dto.stander.InDTO;
 import com.jjx.boot.dto.stander.OutBody;
 import com.jjx.boot.dto.stander.OutDTO;
@@ -13,9 +13,9 @@ import com.jjx.boot.dto.twocolor.UptBallInDTO;
 import com.jjx.boot.entity.BigLotto;
 import com.jjx.boot.entity.TwoColorBall;
 import com.jjx.boot.service.inter.IBallService;
-import com.jjx.boot.util.FileUtils;
-import com.jjx.boot.util.MapBean;
-import com.jjx.boot.util.RedisUtil;
+import com.jjx.boot.common.util.FileUtils;
+import com.jjx.boot.common.util.MapBean;
+import com.jjx.boot.common.util.RedisUtil;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
